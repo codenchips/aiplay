@@ -1,0 +1,33 @@
+<html>
+<body>
+<script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+<script type="module">
+    const API_KEY = "AIzaSyCDHXtlLHB5CS91VJCrQo_P-mqIXBNwL_o";
+
+    import { GoogleGenerativeAI } from "@google/generative-ai";
+
+    const genAI = new GoogleGenerativeAI(API_KEY);
+
+    async function run() {
+        // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest"});
+
+        const prompt = "Write a story about a magic backpack."
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+        console.log(text);
+    }
+
+    run();
+
+</script>
+</body>
+</html>
